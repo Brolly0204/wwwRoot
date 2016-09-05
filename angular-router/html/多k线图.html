@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="main" style="width: 600px; height: 300px"></div>
+<div id="main1" style="width: 600px; height: 300px"></div>
+<script src="../common/echarts.min.js"></script>
+<script type="text/javascript">
+    var main = document.getElementById('main');
+    var myChart = echarts.init(main);
+
+    var obj = {
+        name: '搜索引擎',
+        type: 'line',
+//        stack: '总量',
+        //  区域填充
+        areaStyle: {
+            normal: {
+                opacity: 0.3
+            }
+        },
+        label: {
+            normal: {
+                //  曲线显示数值
+                show: true,
+                position: 'top'
+            }
+        },
+        areaStyle: {normal: {}},
+        data: [820, 932, 901, 934, 1290, 1330, 1320]
+    };
+    option = {
+        title: {
+            text: '堆叠区域图'
+        },
+//        滑过显示设置
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow',
+                shadowColor: 'blue',
+                color: 'red'
+            }
+        },
+        legend: {
+            data: ['邮件营销', '联盟广告', '视频广告','1233']
+        },
+//        工具栏
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                dataView: {
+                    readOnly: false,
+                    optionToContent: function (opt) {
+                        var axisData = opt.xAxis[0].data;
+                        var series = opt.series;
+                        var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+                                + '<td>日期</td>';
+                        for (var g = 0; g < series.length; g++) {
+                            table += '<td>' + series[g].name + '</td>'
+                        }
+
+                        table += '</tr>';
+                        for (var i = 0, l = axisData.length; i < l; i++) {
+                            table += '<tr>'
+                                    + '<td>' + axisData[i] + '</td>';
+                            for (var j = 0, k = series.length; j < k; j++) {
+                                var datas = series[j].data[i] || 0;
+                                table += '<td>' + datas + '</td>'
+
+                            }
+                            table += '</tr>';
+                        }
+                        for (var i = 0, l = series.length; i < l; i++) {
+                        }
+                        table += '</tbody></table>';
+                        return table;
+                    }
+                },
+                magicType: {type: ['line', 'bar']},
+                saveAsImage: {}
+            },
+
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+//        x轴
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+//        y轴
+        yAxis: [
+            {
+                type: 'value',
+//                y轴 数据单位
+                axisLabel: {
+                    formatter: '{value} k'
+//                    formatter: function (value, index) {
+//                        return value / 1000 + "k";
+//                    }
+                },
+//                min:'2000',
+//                max:'1000000'
+            }
+        ],
+        series: [
+
+            {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+//                y轴数据
+                data: [null, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'line',
+//                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                areaStyle: {normal: {}},
+                label:{},
+                data: [220, 182, null, 234, null, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: [150, 232, 201, null, 190, 330, 410]
+            },
+            {
+                name: '直接访问',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '1233',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: [320, 332, 301, 334, 390, 330, 320]
+            }
+
+        ]
+    };
+
+    option.series.push(obj);
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

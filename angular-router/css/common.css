@@ -1,0 +1,339 @@
+.condline .tabOptions {
+    box-sizing: border-box;
+    padding-left: 103px;
+    height: 100%;
+    line-height: 42px;
+    cursor: pointer;
+}
+/* 导出按钮 */
+.export-data{
+    position: absolute;
+    right: 90px;
+    top: 6px;
+    background: url("../images/icons.png") no-repeat;;
+    background-color: #fbfbfb;
+    background-position: 5px -96px;
+    padding-left: 25px;
+    cursor: pointer;
+}
+/* 数据视图 */
+.dataTable {
+    border-bottom: 1px solid #ddd;
+}
+.dataTable tbody>tr{
+    font-weight: 600;
+    color: black;
+}
+.dataTable tr td {
+    padding:5px  0;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.table thead th,h2{
+    font-weight: 600;
+    color: black;
+}
+.table>thead>tr>th{
+    border-bottom: 2px solid #999999;
+}
+.condline .tabOptions span {
+    padding: 2px 5px;
+}
+/* 更多选择 */
+.condline .tabOptions .tablist_more{
+    padding-right: 12px;
+    background: url("../images/more_updown.png") no-repeat 34px -12px;
+}
+.condline .tabOptions span.moreSelect {
+    color: #fff;
+    background: url("../images/arrow_upmore.png") no-repeat 31px 7px #078FEE;
+    background-size: 12px 7px;
+}
+
+/* 更多选择tab */
+.tabmore_city{
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 150px;
+    width: 540px;
+    height: 160px;
+    z-index: 11;
+    border: 1px solid #CCC;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+    background: #fff;
+    cursor: pointer;
+}
+.tabmore_city .search_query {
+    padding: 5px 10px;
+    background: #ececec;
+    overflow: hidden;
+    zoom: 1;
+}
+.tabmore_city .select_all{
+    width: 100px;
+    float: left;
+    overflow: hidden;
+    zoom: 1;
+}
+.tabmore_city .search_world{
+    width: 150px;
+    float: right;
+    border: 1px solid #CCC;
+    background: url("../images/search.jpg") no-repeat 128px 0 #fff;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
+    line-height: 17px;
+}
+.tabmore_city .select_label{
+    display: block;
+    margin-top: 1px;
+    float: right;
+    font-weight: 100;
+}
+.showLabel span{
+    margin-right: 30px;
+}
+.data_params label{
+    font-weight: 100;
+}
+.tabmore_city .search_text{
+    box-sizing: border-box;
+    height: 125px;
+    overflow-y: auto;
+    padding: 7px 10px 10px;
+}
+.search_text ul{
+    overflow: hidden;
+}
+.tabmore_city .search_text .query_checks{
+    float: left;
+    width: 124px;
+    margin-bottom: 2px;
+    overflow: hidden;
+}
+.tabmore_city .select_labcheck,.tabmore_city .select_checkbox{
+    float: left;
+
+}
+.tabmore_city .labelText{
+    float: left;
+    font: 12px /20px normal Helvetica, Arial, sans-serif;
+    color: #4F5155;
+}
+.tabmore_city .select_labcheck{
+    padding-left: 5px;
+}
+.condline .tabOptions span.selected {
+    color: #fff;
+    background: #078FEE;
+}
+
+/* 分页 */
+.table{
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+}
+.table th, .table td {
+    text-align: center;
+}
+.pub_box_table .pageNums{
+    padding: 8px 5px;
+    overflow: hidden;
+    zoom: 1;
+}
+.pub_box_table .pageNum{
+    float: right;
+    height: 32px;
+    overflow: hidden;
+    zoom: 1;
+    cursor: pointer;
+
+}
+.pub_box_table .pageNum li:hover{
+    color: #686868;
+}
+ .pageNum .dot{
+     float: left;
+    border-right: 1px solid #d6d6d6;
+    padding: 2px 13px 0;
+    height: 32px;
+    font-size: 12px;
+    font-family: "Tahoma";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 24px;
+     background: #f8fafa;
+     border: 1px solid #ddd;
+     border-right: none;
+    /* margin-left: -1px; */
+}
+.pageNums .arrowNext{
+    display: block;
+    float: right;
+    width: 50px;
+    height: 32px;
+    border: 1px solid #ddd;
+    background: url("../images/arrow_next.png") no-repeat center #f8fafa;
+    cursor: pointer;
+
+  }
+.pageNums .arrowPrev{
+    float: right;
+    display: block;
+    width: 50px;
+    height: 32px;
+    background: url("../images/arrow_prev.png") no-repeat center #f8fafa;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+.pageNums .arrowNextsec{
+    display: block;
+    float: right;
+    width: 50px;
+    height: 32px;
+    background: url("../images/arrow_nextsec.png") no-repeat center #f8fafa;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-left: none;
+}
+.pageNums .arrowPrevsec{
+    float: right;
+    display: block;
+    width: 50px;
+    height: 32px;
+    background: url("../images/arrow_prevsec.png") no-repeat center #f8fafa;
+    border: 1px solid #ddd;
+    border-right: none;
+    cursor: pointer;
+}
+.pageNum .showPage {
+    display: block !important;
+}
+
+.pageNum .hidePage {
+    display: none !important;
+}
+.pub_box_table .pageNum li{
+    text-align: center;
+    float: left;
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #ddd;
+    border-right: none;
+    background: #f8fafa;
+}
+.pub_box_table .pageNum li.selected{
+    border-top: 2px solid #666;
+    border-top-color:#00a0e9 ;
+    background: #fff;
+}
+.pageNums .listNum{
+    width: 250px;
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    padding-left:10px;
+}
+.pub_box_table .pageNum .arrowPrev{
+    background: url("../images/arrow_prevsec.png") no-repeat center;
+}
+.pub_box_table .pageNum .arrowNext{
+    background: url("../images/arrow_nextsec.png") no-repeat center;
+}
+.table_thead{
+    cursor: pointer;
+}
+.data_params{
+    display: none;
+    width: 362px;
+    height: 267px;
+    position: absolute;
+    top:36px;
+    right: 0;
+    background: #fff;
+    overflow-y: auto;
+    zoom: 1;
+    z-index: 11;
+    border: 1px solid #CCC;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+}
+.data_params .data_indes{
+    padding: 5px 0 0 10px;
+    overflow: hidden;
+    zoom: 1;
+}
+.data_params .data_indes li{
+    width: 166px;
+    float:left;
+    line-height: 20px;
+}
+.data_params .tab_label span {
+    position: relative;
+    top: -3px;
+    left: 2px;
+}
+.data_params .label_checks{
+    padding: 5px 10px;
+    background: #ececec;
+    overflow: hidden;
+    line-height: 5px;
+}
+
+.data_params .label_checks span{
+    position: relative;
+    top: -3px;
+    left: 2px;
+}
+.help_tabinde{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    padding-right: 12px;
+    background: url("../images/more_updown.png") no-repeat 62px -9px;
+}
+.help_tabind{
+    padding-right: 12px;
+    background: url("../images/more_updown.png") no-repeat 62px -8px;
+}
+.help_order{
+    padding-right: 12px;
+    background: url("../images/more_updown.png") no-repeat 62px -8px;
+}
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.3);
+}
+
+.loading .loads{
+    position: absolute;
+    margin-left:50%;
+    margin-top:300px;
+    width: 31px;
+    height: 31px;
+    background: url("../images/loading.gif")  center no-repeat;
+}
+.pointInfo{
+    display: none;
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    line-height: 100px;
+    text-align: center;
+}
+#footer {
+    color: #000;
+}
+.orderTabel thead tr{
+    cursor: pointer;
+}
+/* 最近日期选中样式 */
+.latestDate a.select{
+    background: #527ec0;
+    color: #FFF;
+}

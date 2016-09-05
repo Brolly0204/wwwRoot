@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="project-title">
+        <h2 class="project-title-content">维度选择</h2>
+    </div>
+    <div class="dimension">
+        <!-- 日期 -->
+        <div class="condline condDate">
+            <div class="condlinetitle">日期</div>
+            <div class="wrappers">
+                <div class="ta_date" id="div_date_demo3">
+                    <span class="date_title" id="date_demo3"></span>
+                    <a class="opt_sel" id="input_trigger_demo3">
+                        <i class="i_orderd"></i>
+                    </a>
+                </div>
+                <div class="latestDate">
+                    <a href="javascript:;" id="aRecent7DaysDemo3">最近七天</a>
+                    <a href="javascript:;" id="aRecent30DaysDemo3">最近一个月</a>
+                    <a href="javascript:;" id="aRecent90DaysDemo3">最近3个月</a>
+                    <a href="javascript:;" id="aRecent180DaysDemo3">最近半年</a>
+                </div>
+                <div id="datePicker"></div>
+            </div>
+        </div>
+        <!-- 订单类型  -->
+        <div class="condline">
+            <span>{{dete}}</span>
+            <div class="condlinetitle">订单类型</div>
+            <div class="tabOptions" id="param_order_type" badg="">
+                <span class="selected quetab" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in order_type" class=" quetab"
+                      ng-click="tabSelect($event)" data-index="{{key}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple">
+                <span ng-init="flag=''" ng-click="selectTab($event)" class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <!-- 代理商 -->
+        <div class="condline">
+            <div class="condlinetitle">代理商</div>
+            <div id="vs_comp_agent">
+                <div class="tabOptions" id="param_agency" badg="">
+                    <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                    <span ng-repeat="(key,value) in agency " class=""
+                          ng-click="tabSelect($event)" data-index="{{key}}">{{value}}</span>
+                </div>
+                <div class="checkbox dimension_selector multiple_wrapper to_multiple">
+                    <span ng-init="flag=''" ng-click="selectTab($event)" class="to_unselect">多选</span>
+                </div>
+                <div class="couple_selection lightblue dimension_selector split move_over">
+                    <div>
+                        <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                        <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 产品线 -->
+        <div class="condline">
+            <div class="condlinetitle">产品线</div>
+            <div class="tabOptions" id="param_product" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in product " class=""
+                      ng-click="tabSelect($event)" data-index="{{key}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple"><span ng-init="flag=''"
+                                                                                        ng-click="selectTab($event)"
+                                                                                        class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <!-- 分端 -->
+        <div class="condline">
+            <div class="condlinetitle">分端</div>
+            <div class="tabOptions" id="param_item" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in item " class="" ng-click="tabSelect($event)"
+                      data-index="{{key}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple"><span ng-init="flag=''"
+                                                                                        ng-click="selectTab($event)"
+                                                                                        class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <!-- OS -->
+        <div class="condline">
+            <div class="condlinetitle">os</div>
+            <div class="tabOptions" id="param_os" badg="">
+                <span class="selected" ng-click="tabSelect($event)" data-index="-1">全部</span>
+                <span ng-repeat="(key,value) in os " class="" ng-click="tabSelect($event)"
+                      data-index="{{key}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple"><span ng-init="flag=''"
+                                                                                        ng-click="selectTab($event)"
+                                                                                        class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <!-- 分版本 -->
+        <div class="condline">
+            <div class="condlinetitle">分版本</div>
+            <div class="tabOptions" id="param_app_version" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in app_version " class="" ng-click="tabSelect($event)"
+                      data-index="{{key}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple"><span ng-init="flag=''"
+                                                                                        ng-click="selectTab($event)"
+                                                                                        class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <!-- 出发城市 -->
+        <div class="condline">
+            <div class="condlinetitle">出发城市</div>
+            <div class="tabOptions" id="param_dep_city" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in depCitys.arrObj " class=""
+                      ng-click="tabSelect($event)" data-index="{{value}}">{{value}}</span>
+                <!-- 更多按钮 -->
+                <span class="tablist_more" style="display: none" ng-show="{{depCitys.arrTab.length != 0 }}"
+                      id="tablistMore" tabe="" ng-click="isshowe($event)">
+                    更多
+                </span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple">
+                <span ng-init="flag=''" ng-click="selectTab($event)" class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+            <!-- 更多 -->
+            <div class="tabmore_city">
+                <div class="search_query">
+                    <label class="select_all showLabel">
+                        <input class="select_alls" type="checkbox" ng-click="selectShow($event)"
+                               ng-init="selecter=false" ng-model="selecter">
+                        <span class="select_label">显示已选</span>
+                    </label>
+                    <div><input type="text" class="search_world search_worldr" ng-model="querys"
+                                ng-change="queryChange()" placeholder="搜索关键字">
+                    </div>
+                </div>
+                <div class="search_text">
+                    <ul>
+                        <!--<li class="query_checks" ng-repeat="(key,val) in depCitys.arrTab | filter:querys " >-->
+                        <li class="query_checks" ng-repeat="(key,val) in depCitys.arrTab ">
+                            <label class="labelText">
+                                <input type="checkbox" class="select_checkbox uncheck" ng-click="moreSelect($event)" ng-init="tables=false" ng-model="tables"> <span class="select_label select_labcheck" data-index="{{val}}">{{val}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 到达城市 -->
+        <div class="condline">
+            <div class="condlinetitle">到达城市</div>
+            <div class="tabOptions" id="param_arr_city" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in arrCitys.arrObj "
+                      ng-click="tabSelect($event)" data-index="{{value}}">{{value}}</span>
+                <!-- 更多按钮 -->
+                <span class="tablist_more" style="display: none" ng-click="isshowe($event)">更多</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple">
+                <span ng-init="flag=''" ng-click="selectTab($event)"  class="to_unselect">多选</span>
+            </div>
+            <!-- 对比汇总 -->
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+            <!-- 更多 -->
+            <div class="tabmore_city">
+
+                <div class="search_query">
+                    <label class="select_all showLabel">
+                        <input class="select_alls" type="checkbox" ng-click="selectShow($event)"
+                               ng-init="selecter=false" ng-model="selecter"> <span class="select_label">显示已选</span>
+                    </label>
+                    <div><input type="text" class="search_world search_worlde" ng-model="queryr"
+                                ng-change="queryChanger()" placeholder="搜索关键字"></div>
+                </div>
+                <div class="search_text">
+                    <ul>
+                        <li class="query_checks" ng-repeat="(key,val) in arrCitys.arrTab ">
+                            <label class="labelText">
+                                <input type="checkbox" class="select_checkbox uncheck" ng-click="moreSelect($event)"
+                                                                      ng-init="tables=false" ng-model="tables"> <span
+                                    class="select_label select_labcheck" data-index="{{val}}">{{val}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 航空公司 -->
+        <div class="condline">
+            <div class="condlinetitle">航空公司</div>
+            <div class="tabOptions" id="param_airline_name" badg="">
+                <span class="selected" data-index="-1" ng-click="tabSelect($event)">全部</span>
+                <span ng-repeat="(key,value) in airlines.arrObj"
+                      ng-click="tabSelect($event)" data-index="{{value}}">{{value}}</span>
+                <!-- 更多按钮 -->
+                <span class="tablist_more" style="display: none" ng-click="isshowe($event)">更多</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple">
+                <span ng-init="flag=''" ng-click="selectTab($event)" class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+            <!-- 更多 -->
+            <div class="tabmore_city">
+
+                <div class="search_query">
+                    <label class="select_all showLabel">
+                        <input class="select_alls" type="checkbox" ng-click="selectShow($event)"
+                               ng-init="selecter=false" ng-model="selecter"> <span class="select_label">显示已选</span>
+                    </label>
+                    <div><input type="text" class="search_world search_airlines" ng-model="querye"
+                                ng-change="queryChanges()" placeholder="搜索关键字"></div>
+                </div>
+                <div class="search_text">
+                    <ul>
+                        <li class="query_checks" ng-repeat="(key,val) in airlines.arrTab ">
+                            <label class="labelText">
+                                <input type="checkbox" class="select_checkbox uncheck" ng-click="moreSelect($event)" ng-init="tables=false" ng-model="tables"> <span class="select_label select_labcheck" data-index="{{val}}">{{val}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 舱位类型 -->
+        <div class="condline">
+            <div class="condlinetitle">舱位类型</div>
+            <div class="tabOptions" id="param_class_name" badg="">
+                <span class="selected" ng-click="tabSelect($event)" data-index="-1">全部</span>
+                <span ng-repeat="(key,value) in class_name " class="" ng-click="tabSelect($event)"
+                      data-index="{{value}}">{{value}}</span>
+            </div>
+            <div class="checkbox dimension_selector multiple_wrapper to_multiple"><span ng-init="flag=''"
+                                                                                        ng-click="selectTab($event)"
+                                                                                        class="to_unselect">多选</span>
+            </div>
+            <div class="couple_selection lightblue dimension_selector split move_over">
+                <div>
+                    <label class="ls on" ng-click="tabSplit($event)" data-type="false"><input checked="">汇总</label>
+                    <label class="rs" ng-click="tabSplit($event)" data-type="true"><input>对比</label>
+                </div>
+            </div>
+        </div>
+        <div class="query-button">
+            <input type="button" value="查询" class="operation_data search_data"/>
+            <!--
+                         <span style="display: inline-block; height: 17px;border: 1px solid #e0e0e0;background-color: #fdfdfd;padding: 8px;margin-left: 10px;">指标"酒店详情页UV"、"可预订酒店详情页UV"、"预定点击booking数"不支持维度"支付类型"、"业务类型"、"房间类型"除全部选项之外的任一或组合选择</span>
+            -->
+
+        </div>
+        <!-- 趋势分析 -->
+        <div class="content">
+            <div class="data-title">
+                <h2 class="project-title-content">趋势分析</h2>
+                <div class="fr chart_index">
+                    <a href="http://wiki.baidu.com/pages/viewpage.action?pageId=156876121" target="_blank"
+                       class="help-btn">wiki说明</a>
+                    <a class="help-btn index_btn help_tabind" ng-click="tabChart($event)">选择指标</a>
+                </div>
+                <!-- 指标选择 -->
+                <div class="data_params chart_params">
+                    <div class="label_checks">
+                        <label class="showLabel"><input type="checkbox"
+                                                        ng-click="tabShowe($event)"><span>显示已选</span></label>
+                        <!-- 单选多选 -->
+                        <div class="couple_selection lightblue zbcombox_multiple">
+                            <div class="lsCharts" data-ids="ws_comp_chart">
+                                <label class="ls on" style="padding: 0px 7px;" ng-click="lsChange($event)"><input
+                                        checked="" data-index="0" ng-click="singleTabs($event)">单选</label> <label
+                                    class="rs" style="padding: 0px 7px;" ng-click="lsChange($event)"><input
+                                    data-index="1">多选</label>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="param_chartIndexes" class="data_indes" data-ids="ws_comp_chart">
+                        <li ng-repeat="(key,value) in tabIndexs">
+                            <label class="tab_label"><input type="checkbox" data-index="{{key}}"
+                                                            ng-click="changIndexs($event)"><span>{{value}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chart_box">
+                <div style="width: 1098px;overflow: auto;" id="chart_scrollcon">
+                    <div class="chart_opt">
+                    </div>
+                    <div id="main" style="width:100%;height:310px;padding-bottom: 10px">
+                        <div class="pointInfo pointChart">暂无数据！</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 详细数据分页 -->
+            <div class="data-title data-export-title">
+                <h2 class="project-title-content">详细数据</h2>
+                <a class="help-btn index_btn export-data" ng-click="exportExcel()">导出</a>
+                <a class="help-btn help_tabinde index_btn" ng-click="tabIndes($event)">选择指标</a>
+                <!-- 指标选择 -->
+                <div class="data_params table_params">
+                    <div class="label_checks">
+                        <label class="showLabel"><input type="checkbox"
+                                                        ng-click="tabShowe($event)"><span>显示已选</span></label>
+                        <div class="couple_selection lightblue zbcombox_multiple">
+                            <div class="lsTables" data-ids="ws_comp_table">
+                                <label class="ls on" style="padding: 0px 7px;" ng-click="lsChange($event)"><input
+                                        checked="" data-index="0" ng-click="singleTabe($event)">单选</label> <label
+                                    class="rs" style="padding: 0px 7px;" ng-click="lsChange($event)"><input
+                                    data-index="1">多选</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 选择指标 -->
+                    <ul id="param_tableIndexes" class="data_indes" data-ids="ws_comp_table">
+                        <li ng-repeat="(key,value) in tabIndexs">
+                            <label class="tab_label"><input type="checkbox" data-index="{{key}}"
+                                                            ng-click="changTable($event)"><span>{{value}}</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pub_box_c pub_box_table">
+                <div class="pointInfo pointTable">暂无数据！</div>
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <!--<th>{{fields}}</th>-->
+                        <th ng-if="fields.create_time.name">{{fields.create_time.name}}</th>
+                        <th ng-if="fields.agency.name">{{fields.agency.name}}</th>
+                        <th ng-if="fields.dep_city.name">{{fields.dep_city.name}}</th>
+                        <th ng-if="fields.arr_city.name">{{fields.arr_city.name}}</th>
+                        <th ng-if="fields.product.name">{{fields.product.name}}</th>
+                        <th ng-if="fields.item.name">{{fields.item.name}}</th>
+                        <th ng-if="fields.os.name">{{fields.os.name}}</th>
+                        <th ng-if="fields.app_version.name">{{fields.app_version.name}}</th>
+                        <th ng-if="fields.order_type.name">{{fields.order_type.name}}</th>
+                        <th ng-if="fields.all_airline_name.name">{{fields.all_airline_name.name}}</th>
+                        <th ng-if="fields.class_name.name">{{fields.class_name.name}}</th>
+                        <!-- 指标 -->
+                        <th ng-if="fields.all_order_gmv.name">{{fields.all_order_gmv.name}}</th>
+                        <th ng-if="fields.pay_succ_gmv.name">{{fields.pay_succ_gmv.name}}</th>
+                        <th ng-if="fields.output_gmv.name">{{fields.output_gmv.name}}</th>
+                        <th ng-if="fields.all_order_num.name">{{fields.all_order_num.name}}</th>
+                        <th ng-if="fields.submit_succ_order_num.name">{{fields.submit_succ_order_num.name}}</th>
+                        <th ng-if="fields.pay_succ_order_num.name">{{fields.pay_succ_order_num.name}}</th>
+                        <th ng-if="fields.output_order_num.name">{{fields.output_order_num.name}}</th>
+                        <th ng-if="fields.channel_pv.name">{{fields.channel_pv.name}}</th>
+                        <th ng-if="fields.channel_uv.name">{{fields.channel_uv.name}}</th>
+                        <th ng-if="fields.list_pv.name">{{fields.list_pv.name}}</th>
+                        <th ng-if="fields.list_uv.name">{{fields.list_uv.name}}</th>
+                        <th ng-if="fields.order_write_pv.name">{{fields.order_write_pv.name}}</th>
+                        <th ng-if="fields.order_write_uv.name">{{fields.order_write_uv.name}}</th>
+                        <th ng-if="fields.order_confirm_pv.name">{{fields.order_confirm_pv.name}}</th>
+                        <th ng-if="fields.order_confirm_uv.name">{{fields.order_confirm_uv.name}}</th>
+                        <th ng-if="fields.order_pay_pv.name">{{fields.order_pay_pv.name}}</th>
+                        <th ng-if="fields.order_pay_uv.name">{{fields.order_pay_uv.name}}</th>
+                        <th ng-if="fields.daily_user_num.name">{{fields.daily_user_num.name}}</th>
+                        <th ng-if="fields.month_user_num.name">{{fields.month_user_num.name}}</th>
+                        <th ng-if="fields.output_ticket_num.name">{{fields.output_ticket_num.name}}</th>
+                        <th ng-if="fields.ticket_order_rate.name">{{fields.ticket_order_rate.name}}</th>
+                        <th ng-if="fields.order_user_unit_price.name">{{fields.order_user_unit_price.name}}</th>
+                        <th ng-if="fields.pay_user_unit_price.name">{{fields.pay_user_unit_price.name}}</th>
+                        <th ng-if="fields.user_unit_price.name">{{fields.user_unit_price.name}}</th>
+                        <th ng-if="fields.ticket_unit_price.name">{{fields.ticket_unit_price.name}}</th>
+                        <th ng-if="fields.endorse_order_num.name">{{fields.endorse_order_num.name}}</th>
+                        <th ng-if="fields.endorse_user_num.name">{{fields.endorse_user_num.name}}</th>
+                        <th ng-if="fields.endorse_money.name">{{fields.endorse_money.name}}</th>
+                        <th ng-if="fields.refund_order_num.name">{{fields.refund_order_num.name}}</th>
+                        <th ng-if="fields.refund_users.name">{{fields.refund_users.name}}</th>
+                        <th ng-if="fields.refund_money.name">{{fields.refund_money.name}}</th>
+                        <th ng-if="fields.refund_order_rate.name">{{fields.refund_order_rate.name}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="value in pageInfo ">
+                        <td ng-if="value.create_time != null ">{{value.create_time}}</td>
+                        <td ng-if="value.agency != null ">{{value.agency}}</td>
+                        <td ng-if="value.dep_city != null ">{{value.dep_city}}</td>
+                        <td ng-if="value.arr_city != null ">{{value.arr_city}}</td>
+                        <td ng-if="value.product != null ">{{value.product}}</td>
+                        <td ng-if="value.item != null ">{{value.item}}</td>
+                        <td ng-if="value.os != null ">{{value.os}}</td>
+                        <td ng-if="value.app_version != null ">{{value.app_version}}</td>
+                        <td ng-if="value.order_type != null ">{{value.order_type}}</td>
+                        <td ng-if="value.all_airline_name != null ">{{value.airline_name}}</td>
+                        <td ng-if="value.class_name != null ">{{value.class_name}}</td>
+                        <!-- 指标 -->
+                        <td ng-if="value.all_order_gmv != null ">{{value.all_order_gmv}}</td>
+                        <td ng-if="value.pay_succ_gmv != null">{{value.pay_succ_gmv}}</td>
+                        <td ng-if="value.output_gmv != null">{{value.output_gmv}}</td>
+                        <td ng-if="value.all_order_num != null ">{{value.all_order_num}}</td>
+                        <td ng-if="value.submit_succ_order_num != null ">{{value.submit_succ_order_num}}</td>
+                        <td ng-if="value.pay_succ_order_num != null ">{{value.pay_succ_order_num}}</td>
+                        <td ng-if="value.output_order_num != null ">{{value.output_order_num}}</td>
+                        <td ng-if="value.channel_pv != null ">{{value.channel_pv}}</td>
+                        <td ng-if="value.channel_uv != null ">{{value.channel_uv}}</td>
+                        <td ng-if="value.list_pv != null ">{{value.list_pv}}</td>
+                        <td ng-if="value.list_uv != null ">{{value.list_uv}}</td>
+                        <td ng-if="value.order_write_pv != null ">{{value.order_write_pv}}</td>
+                        <td ng-if="value.order_write_uv != null ">{{value.order_write_uv}}</td>
+                        <td ng-if="value.order_confirm_pv != null ">{{value.order_confirm_pv}}</td>
+                        <td ng-if="value.order_confirm_uv != null ">{{value.order_confirm_uv}}</td>
+                        <td ng-if="value.order_pay_pv != null ">{{value.order_pay_pv}}</td>
+                        <td ng-if="value.order_pay_uv != null ">{{value.order_pay_uv}}</td>
+                        <td ng-if="value.daily_user_num != null ">{{value.daily_user_num}}</td>
+                        <td ng-if="value.month_user_num != null ">{{value.month_user_num}}</td>
+                        <td ng-if="value.output_ticket_num != null ">{{value.output_ticket_num}}</td>
+                        <td ng-if="value.ticket_order_rate != null ">{{value.ticket_order_rate}}</td>
+                        <td ng-if="value.order_user_unit_price != null ">{{value.order_user_unit_price}}</td>
+                        <td ng-if="value.pay_user_unit_price != null ">{{value.pay_user_unit_price}}</td>
+                        <td ng-if="value.user_unit_price != null ">{{value.user_unit_price}}</td>
+                        <td ng-if="value.ticket_unit_price != null ">{{value.ticket_unit_price}}</td>
+                        <td ng-if="value.endorse_order_num != null ">{{value.endorse_order_num}}</td>
+                        <td ng-if="value.endorse_user_num != null ">{{value.endorse_user_num}}</td>
+                        <td ng-if="value.endorse_money != null ">{{value.endorse_money}}</td>
+                        <td ng-if="value.refund_order_num != null ">{{value.refund_order_num}}</td>
+                        <td ng-if="value.refund_users != null ">{{value.refund_users}}</td>
+                        <td ng-if="value.refund_money != null ">{{value.refund_money}}</td>
+                        <td ng-if="value.refund_order_rate != null ">{{value.refund_order_rate}}%</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="pageNums">
+                    <div class="listNum">
+                        共<span>{{rowCount || 0}}</span>条记录，每页显示
+                        <select class="pageSize" ng-model="totel" ng-init="totel='10'" ng-change="newVal($event)">
+                            <option value="5">5</option>
+                            <option value="10" selected="selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+
+                    </div>
+                    <!--ng-click="curPage = curPage+1"-->
+                    <a ng-click="pageLast()" ng-if="pageNum > 5" class="arrowNextsec"></a>
+                    <a ng-click="watchCurpag($event)" class="arrowNext"></a>
+                    <ul class="pageNum">
+                        <li ng-repeat="num in inds" class=" pageList {{$index == '0' ? 'selected':null}}"
+                            ng-hide="{{$index > 5}} || {{$index == 5 && pageNum-1 > 5}}" data-index="{{$index}}" ng-click="pageCount($event)">{{num}}
+                        </li>
+                        <span ng-if="pageNum >= 5" class="dot">...</span>
+                        <li class=" pageList" data-index="{{pageNum-1}}" ng-click="pageCount($event)" ng-if="pageNum > 5">{{pageNum}}</li>
+                    </ul>
+                    <!--ng-click="curPage = curPage-1"-->
+                    <a ng-click="watchCurpag($event)" class="arrowPrev"></a>
+                    <a ng-click="pageInde()" ng-if="pageNum >=5" class="arrowPrevsec"></a>
+                </div>
+            </div>
+
+            <div class="data-title data-export-title">
+                <h2 class="project-title-content">汇总数据</h2>
+            </div>
+            <div class="pub_box_c pub_box_table">
+                <div class="pointInfo pointSummry">暂无数据！</div>
+                <div class="tbl_box">
+                    <table class="table orderTabel" ng-init="order='min';reverse=true">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="(key,value) in summaryFields" ng-click="orderTable(key)">{{value.name}}</th>
+                            <!--<th  ng-repeat="(key,value) in summaryFields" ng-click="order=key;reverse=!reverse">{{value.name}}</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="value in summaryData | orderBy:order:reverse">
+                            <td ng-if="value.date">{{value.date}}</td>
+
+                            <td ng-if="value.product">{{value.product}}</td>
+                            <td ng-if="value.dep_city">{{value.dep_city}}</td>
+                            <td ng-if="value.arr_city">{{value.arr_city}}</td>
+                            <td ng-if="value.airline_name">{{value.airline_name}}</td>
+                            <td ng-if="value.class_name">{{value.class_name}}</td>
+                            <td ng-if="value.item">{{value.item}}</td>
+                            <td ng-if="value.os">{{value.os}}</td>
+                            <td ng-if="value.app_version">{{value.app_version}}</td>
+                            <td ng-if="value.order_type">{{value.order_type}}</td>
+                            <td ng-if="value.agency">{{value.agency}}</td>
+                            <td ng-if="value.idx_name">{{value.idx_name}}</td>
+                            <td ng-if="value.sum">{{value.sum}}</td>
+                            <td ng-if="value.max">{{value.max}}</td>
+                            <td ng-if="value.min">{{value.min}}</td>
+                            <td ng-if="value.avg">{{value.avg}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../common/calendar.js"></script>
+</body>
+</html>

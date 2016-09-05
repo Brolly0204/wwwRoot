@@ -1,0 +1,207 @@
+{
+  "errorNo": 0,
+  "errorMsg": "success",
+  "data": [
+    {
+      "datasets": {
+        "ws_comp_chart": {
+          "categories": [
+            "20160810",
+            "20160811",
+            "20160812",
+            "20160813",
+            "20160814",
+            "20160815",
+            "20160816",
+            "20160817"
+          ],
+          "series": [
+            {
+              "name": "携程_总订单流水",
+              "data": [
+                {
+                  "name": "20160810@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160811@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160812@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160813@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160814@2@2",
+                  "y": 4337142.5
+                },
+                {
+                  "name": "20160815@2@2",
+                  "y": 5699140
+                },
+                {
+                  "name": "20160816@2@2",
+                  "y": 5676311.5
+                },
+                {
+                  "name": "20160817@2@2",
+                  "y": 6040230
+                }
+              ]
+            },
+            {
+              "name": "国航_总订单流水",
+              "data": [
+                {
+                  "name": "20160810@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160811@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160812@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160813@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160814@2@2",
+                  "y": null
+                },
+                {
+                  "name": "20160815@2@2",
+                  "y": 3330
+                },
+                {
+                  "name": "20160816@2@2",
+                  "y": 11850
+                },
+                {
+                  "name": "20160817@2@2",
+                  "y": null
+                }
+              ]
+            }
+          ],
+          "ymin": 0,
+          "dataFormat": 2,
+          "yMin": 3330
+        },
+        "ws_comp_table": {
+          "data": [
+            {
+              "create_time": "20160817",
+              "agency": "携程",
+              "all_order_gmv": 6040230
+            },
+            {
+              "create_time": "20160815",
+              "agency": "国航",
+              "all_order_gmv": 3330
+            },
+            {
+              "create_time": "20160814",
+              "agency": "携程",
+              "all_order_gmv": 4337142.5
+            },
+            {
+              "create_time": "20160816",
+              "agency": "国航",
+              "all_order_gmv": 11850
+            },
+            {
+              "create_time": "20160816",
+              "agency": "携程",
+              "all_order_gmv": 5676311.5
+            },
+            {
+              "create_time": "20160815",
+              "agency": "携程",
+              "all_order_gmv": 5699140
+            }
+          ],
+          "fields": {
+            "create_time": {
+              "name": "日期",
+              "needOrder": true
+            },
+            "agency": {
+              "name": "代理商",
+              "needOrder": true
+            },
+            "all_order_gmv": {
+              "name": "总订单流水",
+              "needOrder": true
+            }
+          },
+          "headers": [],
+          "rowCount": 6
+        },
+        "ws_comp_table_summary": {
+          "data": [
+            {
+              "date": "20160810~20160817",
+              "agency": "携程",
+              "idx_name": "总订单流水",
+              "sum": "21752824.0",
+              "max": "6040230",
+              "min": "4337142.5",
+              "avg": "5438206.00"
+            },
+            {
+              "date": "20160810~20160817",
+              "agency": "国航",
+              "idx_name": "总订单流水",
+              "sum": "15180",
+              "max": "11850",
+              "min": "3330",
+              "avg": "7590.00"
+            }
+          ],
+          "fields": {
+            "date": {
+              "name": "日期范围",
+              "needOrder": true
+            },
+            "agency": {
+              "name": "代理商",
+              "needOrder": true
+            },
+            "idx_name": {
+              "name": "总订单流水",
+              "needOrder": true
+            },
+            "sum": {
+              "name": "汇总",
+              "needOrder": true
+            },
+            "max": {
+              "name": "最大值",
+              "needOrder": true
+            },
+            "min": {
+              "name": "最小值",
+              "needOrder": true
+            },
+            "avg": {
+              "name": "均值",
+              "needOrder": true
+            }
+          },
+          "headers": [],
+          "rowCount": 2
+        }
+      }
+    }
+  ],
+  "time": 1472470310,
+  "duration": 0.30827784538269
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="ngDire">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="ngCtrl">
+    {{des}}
+    <!-- 独立作用域 scope '@' {{属性值}} -->
+    <my-dire desc="des" name="name"></my-dire>
+    <!-- 和$scope 双向绑定 “属性值” 指令scope '=' -->
+    <!-- <my-dire desc="desc"></my-dire> -->
+
+</div>
+<br>
+<!-- 控制器间交互 -->
+<div ng-controller="parentCtrl">
+    商品总价:<input type="text" ng-model="total">
+    {{part}}
+    <div ng-controller="childCtrl">
+        商品的名称:{{prod.name}}<br>
+        商品的单价:{{prod.price}}<br>
+        商品的数量:<input type="text" ng-model="prod.count" ng-change="total()">
+        {{selfs}}
+        <br>
+        <div ng-controller="selfCtrl">
+            {{selfPart}}
+            <input type="text" ng-init="self='liwenli'" ng-model="self">
+        </div>
+    </div>
+</div>
+<div ng-controller="modeCtrl" id="div1">{{num}}</div>
+<div ng-controller="modeCtrl" id="div2">{{num}}</div>
+<script src="../devjs/angular.min.js"></script>
+<script>
+    var mode1 = angular.module('mode1',[]);
+    var mode2 = angular.module('mode2',[]);
+    mode1.controller('modeCtrl',function($scope){
+        $scope.num = 'mode1';
+    })
+    mode2.controller('modeCtrl',function($scope){
+        $scope.num = 'mode2';
+    });
+angular.bootstrap(div1,['mode1']);
+angular.bootstrap(div2,['mode2']);
+
+
+    var dire = angular.module('ngDire', []);
+    dire.controller('selfCtrl', function ($scope) {
+        $scope.$watch('self', function () {
+            $scope.$emit('self', $scope.self)
+        });
+        $scope.$on('tochild', function (ev, data) {
+            $scope.selfPart = data;
+        })
+    });
+    dire.controller('childCtrl', function ($scope) {
+        $scope.$on('self', function (ev, data) {
+            $scope.selfs = data;
+        });
+        $scope.prod = {
+            name: '火车',
+            price: 10,
+            count: 1
+        };
+        $scope.total = function () {
+//            $emit只会从当前的作用域向上进行通信，
+            $scope.$emit('total', $scope.prod.price * $scope.prod.count);
+        };
+//        监听事件
+        $scope.$on('tochild', function (ev, data) {
+            console.log(ev, data);
+            $scope.prod.count = data / $scope.prod.price;
+        })
+    });
+    dire.controller('parentCtrl', function ($scope) {
+        $scope.total = 10;
+//        监听事件 事件的接受只有一个方法
+        $scope.$on('self', function (ev, data) {
+            $scope.part = data;
+        });
+        $scope.$on('total', function (ev, data) {
+            $scope.total = data;
+            $scope.$watch('total', function () {
+//                broadcast 是从发送者向他的子scope发送
+                $scope.$broadcast('tochild', $scope.total);
+            })
+        })
+    });
+
+
+    dire.controller('ngCtrl', function ($scope) {
+        $scope.des = 'hello ';
+        $scope.name = 'liwenli'
+    });
+    dire.directive('myDire', function () {
+//        compile
+        return {
+            transclude: true,
+            template: '<br><input type="text" ng-model="desc"/><br>' +
+            '<input type="text" ng-model="name">' +
+            '<div>Hello,zfpx {{desc}},{{name}}</div>',
+            scope: {
+                desc: '=',
+                name: '='
+            }
+//            在link函数前执行，编译模板，返回的函数为link函数
+//            compile: function (element,attrs) {
+//                var tmpl = element.children();
+//                for(var i = 0; i < attrs.test;i++ ){
+//                    element.append(tmpl.clone());
+//                }
+//                return function (scope,element,attrs){
+////                   scope.title = 'hello world!'
+//                    scope.title = attrs['test']
+//                }
+//            }
+        }
+    })
+</script>
+</body>
+</html>

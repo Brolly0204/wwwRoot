@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/dateRange.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/dimension_selector.css">
+    <link rel="stylesheet" href="../css/couple_selection.css">
+</head>
+<body ng-app ="routeApp" ng-cloak>
+<div class="mainnav">
+    <div class="mainnav_cnt">
+        <div class="logo_dt">
+            <a href="/poseidon/conversion/coreIndex1" title="Poseidon">Poseidon</a>
+        </div>
+        <ul class="mainnav_menu">
+            <li><a href="/poseidon/conversion/coreIndex1" class="on">整体转化</a> </li>
+        </ul>
+    </div>
+</div>
+<div class="subnav">
+    <div class="subnav_cnt">
+        <ul class="subnav_menu subnav_menu_first" id="subnav_menu">
+            <li><a href="#/" class="on">核心指标</a> </li>
+            <li><a href="#/computers" class="">转化率漏斗</a> </li>
+            <li><a href="#/blabla" class="">检索转化分析</a> </li>
+            <li><a href="javascript:;" class="">活跃构成</a> </li>
+            <li><a href="javascript:;" class="">新增付费用户</a> </li>
+            <li><a href="javascript:;" class="">老付费用户</a> </li>
+        </ul>
+
+    </div>
+</div>
+<div ng-view></div>
+<div class="loading">
+<div class="loads"></div>
+</div>
+<div id="footer" style="text-align: center;display:none">
+    <p>
+        Copyright ©2016 Baidu. All Rights Reserved.
+    </p>
+    <p>
+        百度版权所有
+    </p>
+
+    <p style="line-height: 0px">
+        <a onclick="window.scroll(0,0);return false" style="display: none" title="返回顶部" href="#top_header" class="gotop"><span class="up"><img src="" width="31" height="20"></span></a>
+    </p>
+</div>
+<script type="text/javascript" src="../devjs/jquery.min.js"></script>
+<script type="text/javascript" src="../common/dateRange.js"></script>
+<script type="text/javascript" src="../devjs/angular.min.js"></script>
+<script type="text/javascript" src="../node_modules/angular-route/angular-route.js"></script>
+<script>
+        angular.module('routeApp',['ngRoute'])
+
+            .config(['$routeProvider',function ($routeProvider) {
+//                $routeProvider
+//                        .when('/',{template:'这是首页页面'})
+//                        .when('/computers',{template:'这是电脑产品页'})
+//                        .when('/blabla',{template:'这是其他产品页'})
+//                        .otherwise({redirectTo:'/'});
+                $routeProvider
+                        .when('/',{
+                            templateUrl: './context2.html',
+                            controller: 'context2'
+                        })
+                        .when('/computers',{
+                            templateUrl:'./context3.html',
+                            controller: 'context3'
+                        })
+                        .when('/blabla',{
+                            templateUrl:'./context4.html',
+                            controller: 'context4'
+                        })
+                        .otherwise({redirectTo:'/'});
+            }])
+</script>
+<script type="text/javascript" src="../common/echarts.min.js"></script>
+<script type="text/javascript" src="../js/context2.js"></script>
+<script type="text/javascript" src="../js/context3.js"></script>
+<script type="text/javascript" src="../js/context4.js"></script>
+</body>
+</html>

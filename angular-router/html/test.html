@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html ng-app="appMode">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../devjs/angular.min.js"></script>
+    <script type="text/javascript" src="../devjs/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        .oDiv {
+            -webkit-user-select: none;
+        }
+
+        ul.pages {
+            display: inline-block;
+            float: left;
+            overflow: hidden;
+            zoom: 1;
+            /*border-left: 1px solid #000000;*/
+            cursor: pointer;
+        }
+
+        ul.pages li {
+            float: left;
+            list-style: none;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #000000;
+            /*border-left:none ;*/
+        }
+
+        ul.pages li.selected {
+            height: 28px;
+            line-height: 28px;
+            border-top: 3px solid #00a0e9;
+        }
+
+        .pageLis {
+            float: left;
+            display: block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .oDiv {
+            overflow: hidden;
+        }
+
+        .ellipsis {
+            display: block;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+
+        .pages .showPage {
+            display: block !important;
+        }
+
+        .pages .hidePage {
+            display: none !important;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body ng-cloak>
+<div ng-controller="appCtrl">
+    <select ng-model="val" ng-init="t.id='0';t.name='wenli'" ng-options="t.id as t.name for t in type"></select>
+    {{val}}
+    <select ng-model="ef" ng-init="ef='3'">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <h2>{{name}}</h2>
+    <div>
+        <button ng-click="popup($event)">{{!flag?'显示':'隐藏'}}</button>
+        <div>{{!flag?'显示':'隐藏'}}</div>
+        <h2 ng-show="!flag">hello world!</h2>
+    </div>
+    {{flag}}
+    <table ng-init="order='name';rever=false">
+        <thead>
+        <th ng-click="order='name';rever=!rever">name</th>
+        <th ng-click="order='age';rever=!rever">age</th>
+        <th ng-click="order='num';rever=!rever">num</th>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="val in dataInfo | orderBy:order:rever">
+            <td>{{order}}{{rever}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.age}}</td>
+            <td>{{val.num}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="oDiv">
+        <span class="pageLis prev" ng-click="changPage($event)">PREV</span>
+        <ul class="pages">
+            <li ng-repeat="list in listArr" ng-hide="{{$index>4}}" data-index="{{$index}}"
+                class="{{$index == 0 ? 'selected':null}}" ng-click="pageList($event)">{{list}}
+            </li>
+            <span class="ellipsis">...</span>
+            <li ng-click="pageList($event)" data-index="{{listArr.length}}">{{listArr.length+1}}</li>
+        </ul>
+        <span class="pageLis next" ng-click="changPage($event)">NEXT</span>
+    </div>
+
+</div>
+
+
+<zf-student>
+    <div>我叫Jason</div>
+</zf-student>
+
+<div zf-student></div>
+<ul class="ulist lili">
+    <li class="one">1</li>
+    <li class="two">2</li>
+    <li class="three">3</li>
+    <li class="curPages">4</li>
+    <li class="five">5</li>
+    <li class="six">6</li>
+    <li class="seven">7</li>
+</ul>
+
+<!-- directive:zf-student -->
+<script src="../devjs/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+    var obj = {name:2};
+    function arr(who){console.log(this.name+who);}
+    var newArr =  angular.bind(obj,arr,1);
+    newArr();
+
+//    var obj = {a:123},obj1 = {b:456};
+//    angular.copy(obj,obj1);
+//    console.log(obj1);
+    //        var obj1 = '{"aa":123,"bb":456}';
+    //        var a1=angular.fromJson(obj1);
+    //        a1 = angular.toJson(a1);
+    //        console.log(typeof a1);
+    //
+    //        var obj = {a:123},obj1 = {b:456};
+    //        angular.extend(obj,obj1);
+    //        console.log(obj);
+    //
+    //        var a = angular.equals(NaN,NaN);
+    //        console.log(a);
+
+    for( var i=0; i<4;i++){
+        $('.ulist').clone().removeClass('ulist').addClass('list'+i).appendTo('body');
+    }
+
+    var app = angular.module('appMode', []);
+    app.directive('myDire',function () {
+        return {
+            template:'<div>Hello</div>'
+    }
+    });
+    app.controller('appCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+
+        $scope.type = [{name:'人类',id:1},{name:'动物',id:2},{name:'动物',id:3}]
+
+
+
+
+
+        $scope.listArr = [];
+        for (var i = 0; i < 17; i++) {
+            $scope.listArr.push(i + 1);
+        }
+        $scope.dataInfo = [
+            {name: 'li',
+                age: '18',
+                num: '1'
+            },
+            {name: 'di',
+                age: '15',
+                num: '2'
+            },
+            {name: 'qi',
+                age: '33',
+                num: '3'
+            },
+            {name: 'hi',
+                age: '22',
+                num: '4'
+            }
+        ]
+        //  多页码 start
+        //  查找指定个数哥哥 和 弟弟
+        $.fn.extend({
+            nexts: function (num) {
+                var nextNum = [];
+                var next = $(this);
+                for (var i = 0; i < num; i++) {
+                    next = next.next();
+                    if (next[0]) {
+                        nextNum.push(next[0]);
+                    }
+                }
+                return $(nextNum);
+            },
+            prevs: function (num) {
+                var prevNum = [];
+                var pres = $(this);
+                for (var i = 0; i < num; i++) {
+                    pres = pres.prev();
+                    if (pres[0]) {
+                        prevNum.unshift(pres[0]);
+                    }
+                }
+                return $(prevNum);
+            },
+            addShow: function () {
+                $(this).not('span').addClass('showPage').removeClass('hidePage');
+            }
+        });
+        var showInd = $scope.listArr.length;
+        $scope.pageList = function ($event) {
+            var tar = $event.target;
+            $(tar).addClass('selected').siblings('li').removeClass('selected');
+            var cur = $scope.curPage = $(tar).data('index');
+            pageNum(cur);
+        };
+
+        //  上下页切换
+        $scope.curPage = 0;
+        $scope.changPage = function ($event) {
+            var tar = $event.target;
+            var cur;
+            if ($(tar).hasClass('prev')) {
+                $scope.curPage--;
+                if ($scope.curPage <= 0) {
+                    $scope.curPage = 0;
+                }
+                cur = $scope.curPage;
+                pageNum(cur);
+            } else if ($(tar).hasClass('next')) {
+                $scope.curPage++;
+                cur = $scope.curPage;
+                if ($scope.curPage >= showInd) {
+                    $scope.curPage = 17;
+                }
+                pageNum(cur);
+            }
+        };
+
+        function pageNum(cur) {
+            var curPage = $('.pages>li').eq(cur);
+            curPage.addClass('selected').siblings("li").removeClass("selected");
+            if (cur == showInd - 2) {
+                $('.pages>li').not('li:last').not(curPage).addClass('hidePage').removeClass('showPage');
+                $('.ellipsis').hide();
+                curPage.nexts(1).addShow();
+                curPage.prevs(3).addShow();
+                return;
+            }
+            if (cur == showInd) {
+                $('.pages>li').not('li:last').addClass('hidePage').removeClass('showPage');
+                curPage.prevs(6).addShow();
+            }
+            if (cur >= 2 && cur <= showInd - 2) {
+                $('.pages>li').not('li:last').not(curPage).addClass('hidePage').removeClass('showPage');
+                curPage.nexts(2).addShow();
+                curPage.prevs(2).addShow();
+            }
+            if (cur == 1) {
+                curPage.prev().addShow();
+            }
+            if (cur >= showInd - 3) {
+                curPage.nextAll().addShow();
+                $('.ellipsis').hide();
+            } else if (cur <= showInd - 4) {
+                $('.ellipsis').show();
+            }
+        }
+
+        //  多页码 end
+
+        console.log($('.curPages').nexts(5).addClass('red'));
+        console.log($('.curPages').prevs(5));
+
+
+//        function pageNum (cur){
+//            console.log(cur);
+//            var curPage = $('.pages>li').eq(cur);
+//            curPage.addClass('selected').siblings("li").removeClass("selected");
+//            if (cur == showInd - 2) {
+//                $('.pages>li').not('li:last').not($('.pages>li').eq(cur)).addClass('hidePage').removeClass('showPage');
+//                $('.ellipsis').hide();
+//                curPage.nexts(1).not('span').addClass('showPage').removeClass('hidePage');
+//                curPage.prevs(3).not('span').addClass('showPage').removeClass('hidePage');
+//                return;
+//            }
+//            if (cur == showInd) {
+//                $('.pages>li').not('li:last').addClass('hidePage').removeClass('showPage');
+//                curPage.prevs(6).not('span').addClass('showPage').removeClass('hidePage');
+//            }
+//            if (cur >= 2 && cur <= showInd - 2) {
+//                $('.pages>li').not('li:last').not($('.pages>li').eq(cur)).addClass('hidePage').removeClass('showPage');
+//                curPage.nexts(2).not('span').addClass('showPage').removeClass('hidePage');
+//                curPage.prevs(2).not('span').addClass('showPage').removeClass('hidePage');
+//            }
+//            if(cur == 1){
+//                curPage.prev().addClass('showPage').removeClass('hidePage');
+//            }
+//            if (cur >= showInd - 3 ) {
+//                curPage.nextAll().not('span').addClass('showPage').removeClass('hidePage');
+//                $('.ellipsis').hide();
+//            } else if (cur <= showInd - 4) {
+//                $('.ellipsis').show();
+//            }
+//        }
+
+        $scope.name = 'nihao';
+        $timeout(function () {
+            $scope.name = 'liwenli'
+        }, 3000);
+
+//        $timeout(function(){
+//            $scope.name = 'Angular'
+//        },5000)
+        $scope.flag = false;
+        $scope.popup = function ($event) {
+//            $event.stopPropagation()
+            $scope.flag = !$scope.flag;
+
+        };
+//        $(document).on('click',function(){
+//            alert('document');
+//        })
+    }]);
+    app.directive('zfStudent', function () {
+        return {
+            transclude: true,
+            restrict: 'AEMC',
+            replace: true,
+            template: '<div><div>name:liwenli</div><span ng-transclude></span></div>'
+        }
+    });
+    var today = new Date();
+    //    alert(today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate());
+    today.setMonth(today.getMonth() - 1);
+    //    alert(today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate());
+
+    function addZero(date) {
+        return ('0' + date).slice(-2);
+    }
+    //    console.log(addZero ('12'));
+</script>
+</body>
+</html>

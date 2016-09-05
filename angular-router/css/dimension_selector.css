@@ -1,0 +1,227 @@
+﻿.dimension_selector.wrapper {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    padding-top: 9px;
+    line-height: 30px;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.dimension_selector.emptydata {
+    display: inline-block;
+    overflow: hidden;
+    height: 21px;
+    line-height: 21px;
+    color: #333;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.dimension_selector.all {
+    display: inline-block;
+}
+
+.dimension_selector.header {
+    display: inline-block;
+}
+
+.dimension_selector.more {
+    width: 35px;
+    position: relative;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: auto;
+    margin-left: 5px;
+    padding-left: 9px;
+    padding-right: 5px;
+    line-height: 21px;
+    height: 21px;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+}
+
+.dimension_selector.more.selected {
+    background: #078fee;
+    color: #fff;
+}
+
+.dimension_selector.more_btn {
+    border-color: #727272 transparent transparent;
+    border-style: solid;
+    border-width: 3px;
+    display: inline-block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    margin: 10px 2px 0 3px;
+    overflow: hidden;
+    vertical-align: top;
+    width: 0;
+}
+
+.dimension_selector.more_btn.selected {
+    border-color: #fff transparent transparent;
+}
+
+.dimension_selector.delimiter {
+    border-top: 1px solid #c3c2bd;
+    width: 5px;
+    height: 1px;
+    position: absolute;
+    top: 20px;
+    right: 91px;
+}
+
+.dimension_selector.multiple_wrapper {
+    color: #333;
+    position: absolute;
+    top: -2px;
+    border: 1px solid #c3c2bd;
+    border-radius: 2px;
+    height: 23px;
+    line-height: 23px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #fefefe;
+    cursor: pointer;
+}
+
+.dimension_selector.multiple_wrapper:hover {
+    border: 1px solid #878787;
+}
+
+.dimension_selector.multiple_wrapper.to_multiple {
+    -webkit-transition: right .2s ease-out;
+    transition: right .2s ease-out;
+    right: 8px;
+}
+.dimension_selector.multiple_wrapper.to_move {
+    -webkit-transition: right .2s ease-out;
+    transition: right .2s ease-out;
+    right: 99px;
+}
+
+.dimension_selector.multiple_wrapper.return_single {
+    right: 99px;
+}
+
+.to_unselect{
+    text-indent: 17px;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    background: url(../images/checkbox/lightblue/unchecked.jpg) 0px 3px no-repeat;
+}
+.to_select {
+    text-indent: 17px;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    background: url(../images/checkbox/lightblue/checked.jpg) 0px 3px no-repeat;
+}
+.dimension_selector.return_single {
+    margin-left: 3px;
+}
+
+.dimension_selector.split {
+    -webkit-transition: right .2s ease-out;
+    transition: right .2s ease-out;
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+
+.dimension_selector.dropdown {
+    position: relative;
+    top: 33px;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 999;
+    border: 1px solid #CCC;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dimension_selector.move_over{
+    -webkit-transition: right .2s ease-out;
+    transition: right .2s ease-out;
+    right: -90px;
+}
+
+.dimension_selector.toolbar {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    background-color: #f0f0f0;
+    padding-left: 10px;
+}
+
+.dimension_selector.search {
+    margin-top: 5px;
+    margin-right: 4px;
+    margin-left: 10px;
+    padding: 0 0 0 5px;
+    line-height: 26px;
+    height: 26px;
+    width: 200px;
+    border: 1px solid #CCC;
+    float: right;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.075);
+    background: #FFF url('../../images/search.jpg') 185px 2px no-repeat;
+}
+
+.dimension_selector.list {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.dimension_selector.list_item {
+    display: inline;
+    max-width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.dimension_item_render {
+    position: relative;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
+    line-height: 21px;
+    height: 21px;
+    text-align: center;
+    color: #333;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dimension_item_render.selected, .dimension_item_render.selected:hover {
+    background: #078fee;
+    color: #fff;
+}
+
+.dimension_item_render.disabled .dimension_item_render.disabled:hover {
+    background: #078fee;
+}
+
+.dimension_item_render:hover {
+    background: #d9eeff;
+    color: #333;
+}

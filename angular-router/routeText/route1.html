@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="routeApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div >
+    <ul>
+        <li><a href="#/">首页</a></li>
+        <li><a href="#/login">login</a></li>
+        <li><a href="#/context">content</a></li>
+    </ul>
+    <div ng-view></div>
+
+</div>
+<script src="../devjs/angular.min.js"></script>
+<script src="../node_modules/angular-route/angular-route.js"></script>
+<script type="text/javascript">
+      angular.module('routeApp',['ngRoute'])
+      .config(['$routeProvider',function($routeProvider){
+            $routeProvider
+                    .when('/',{
+                        template:'<div>首页</div>',
+                        controller:'HomeCont'
+                    })
+                    .when('/login',{
+                        template:'<div>登录页</div>',
+                        controller:'loginCont'
+                    })
+                    .when('/context',{
+                        template:'<div ng-repeat="val in data">内容页{{val}}</div>',
+                        controller:function(data,$scope){
+                            console.log($scope.data = data);
+                            $scope.eff = 'liwenli'
+                        },
+                        resolve:{
+                            'data':['$http',function($http){
+                                return $http.get('./data.json').then(
+                                        function success(res){console.log(res.data);return res.data},
+                                        function error(reason){return false}
+                                )
+                            }]
+                        }
+                    })
+                    .otherwise({redirectTo:'/'});
+      }]);
+</script>
+</body>
+</html>

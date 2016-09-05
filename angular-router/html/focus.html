@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body ng-cloak>
+<div ng-controller="ngCtrl" >
+    <input type="text" ng-model="name">
+    <br>
+    name:{{name}}
+    age:{{age}}
+    <br>
+    <h2>动态引用数据@ = & </h2>
+    <zf-dire name="{{name}}"></zf-dire>
+    <zf-dire name="{{age}}"></zf-dire>
+    <eq-dire name11="name" ng-click="greet(name)"></eq-dire>
+    <eq-dire name11="age" ng-click="greet(age)"></eq-dire>
+    <h2 >link函数</h2>
+    <!--<zf-link name="{{format}}"></zf-link>-->
+    <input type="text" ng-model="format">
+    <span zf-link="{{format}}"></span>
+</div>
+
+<!--<input id="text1" type="text" >-->
+<!--<p>asdfa</p>-->
+<script src="../devjs/jquery-1.11.1.min.js"></script>
+<script src="../devjs/angular.min.js"></script>
+<script src="../node_modules/angular-route/angular-route.js"></script>
+<script>
+    var app = angular.module('ngApp',['ngRoute']);
+    app.controller('ngCtrl',['$scope',function ($s) {
+        $s.name = 'liwenli';
+        $s.age = '18';
+        $s.format = 'yy';
+        $s.greet = function (text) {
+            alert('greet: '+text)
+        }
+    }]);
+    app.directive('zfDire',function () {
+            return {
+                transclude:true,
+                scope:{
+                  name:'@'
+                },
+                template:'<input type="text" ng-model="name"><div >我是一个指令{{name}}</div>'
+            }
+    });
+    app.directive('eqDire',function () {
+        return {
+            transclude:true,
+            scope:{
+                name11:'=',
+                greet:'&'
+            },
+            template:'<input type="text" ng-model="name11"><div ng-click="greet({name:name11})">我是一个指令{{name}}</div>'
+        }
+    });
+//   link 函数
+    app.directive('zfLink',function ($interval,dateFilter) {
+        return {
+//            scope:{
+//                name:'@'
+//            },
+            link: function(scope,element,attrs){
+                function update(){
+//                    element.html(new Date().toLocaleString())
+                    element.html(dateFilter(new Date,scope['name']));
+                    element.html(dateFilter(new Date,attrs['zfLink']));
+                    console.log(attrs['zfLink'])
+                }
+                var timeout = $interval(function () {
+//                    update();
+                },1000);
+                scope.$on('$destroy',function () {
+                    $interval.cancel(timeout);
+                })
+            }
+        }
+    });
+//    app.directive('zfPire',function () {
+//        return {
+//
+//        }
+//    })
+
+
+    $('p').click(function(){
+        console.log(1231);
+    });
+    $('p').trigger('click');
+    $('input').click(function(){
+        $('input').focus();
+    });
+    $('input').trigger('click');
+</script>
+</body>
+</html>
